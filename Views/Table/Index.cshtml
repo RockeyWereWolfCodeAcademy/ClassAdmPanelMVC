@@ -1,0 +1,57 @@
+﻿@using System.Data;
+@model DataTable
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Tables</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="~/Home">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-body">
+                    DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
+                    <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
+                    .
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Actors
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                @foreach (DataColumn item in Model.Columns)
+                                {
+                                    <th>@item.ColumnName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                @foreach (DataColumn item in Model.Columns)
+                                {
+                                    <th>@item.ColumnName</th>
+                                }
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (DataRow item in Model.Rows)
+                            {
+                                <tr>
+                                    <th>@item["Id"]</th>
+                                    <th>@item["Name"]</th>
+                                    <th>@item["Surname"]</th>
+                                    <th>@item["Age"]</th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
